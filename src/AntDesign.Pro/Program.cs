@@ -7,6 +7,7 @@ using AntDesign.Pro.Template.Services;
 //#endif
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using IgniteUI.Blazor.Controls;
 
 namespace AntDesign.Pro.Template
 {
@@ -17,13 +18,21 @@ namespace AntDesign.Pro.Template
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
 //#if (host == 'wasm')
             builder.RootComponents.Add<App>("#app");
-//#endif
+            //#endif
+            builder.Services.AddIgniteUIBlazor();
             builder.Services.AddScoped(
                 sp => new HttpClient {BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)});
 
             AddClientServices(builder.Services);
 
             builder.Services.Configure<ProSettings>(builder.Configuration.GetSection("ProSettings"));
+
+            builder.Services.AddIgniteUIBlazor(
+                typeof(IgbLegendModule),
+                typeof(IgbInputModule),
+                typeof(IgbPropertyEditorPanelModule),
+                typeof(IgbCategoryChartModule)
+            );
 
             await builder.Build().RunAsync();
         }

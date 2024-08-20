@@ -1,5 +1,43 @@
 ﻿[
   {
+    "path": "/chart",
+    "name": "Chart Pages",
+    "key": "chart",
+    "icon": "check-circle",
+    "children": [
+      {
+        "path": "/chart/infragisticsDemo",
+        "name": "InfragisticsDemo",
+        "key": "chart.infragisticsDemo"
+      },
+      {
+        "path": "/chart/moreData",
+        "name": "MoreData",
+        "key": "chart.moreData"
+      },
+      {
+        "path": "/chart/twoLines",
+        "name": "TwoLines",
+        "key": "chart.twoLines"
+      },
+      {
+        "path":"/chart/demoChart",
+        "name":"DemoChart",
+        "key": "chart.demoChart"
+      },
+      {
+        "path": "/chart/zoom",
+        "name": "Zooming",
+        "key": "chart.zoom"
+      },
+      {
+        "path": "/chart/d3",
+        "name": "D3",
+        "key": "chart.d3"
+      }
+    ]
+  },
+  {
     "path": "/dashboard",
     "name": "Dashboard",
     "key": "dashboard",
@@ -19,6 +57,21 @@
         "path": "/dashboard/workplace",
         "name": "Workbench",
         "key": "dashboard.workplace"
+      },
+      {
+        "path": "/dashboard/chart",
+        "name": "DemoChart",
+        "key": "dashboard.chart"
+      },
+      {
+        "path": "/dashboard/zoom",
+        "name": "Zooming",
+        "key": "dashboard.zoom"
+      },
+      {
+        "path": "/dashboard/infragisticsDemo",
+        "name": "InfragisticsDemo",
+        "key": "dashboard.infragisticsDemo"
       }
     ]
   },
@@ -167,4 +220,5 @@
       }
     ]
   }
+
 ]

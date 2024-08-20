@@ -1,0 +1,267 @@
+﻿@page "/chart/demoChart"
+@using ScottPlot
+@using ScottPlot.Blazor
+@inject IJSRuntime JSRuntime
+
+
+@* @if (showTooltip)
+{
+    <div class="tooltip" style="position: absolute; left:@tooltipXpx; top:@tooltipYpx; background: rgba(0, 0, 0, 0.75); color: white; padding: 5px; border-radius: 5px;">
+        @tooltipText
+    </div>
+}
+
+@code {
+    private bool showTooltip = false;
+    private string tooltipText = "";
+    private double tooltipXpx = 0;
+    private double tooltipYpx = 0;
+    private BlazorPlot BlazorPlot { get; set; } = new();
+    double[] actualX = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    double[] actualY = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
+
+    private void OnClick(MouseEventArgs e)
+    {
+        var plt = BlazorPlot.Plot;
+
+        // 获取鼠标相对于图表的坐标
+        var mouseCoords = BlazorPlot.GetMouseCoordinates(e);
+        if (mouseCoords == null)
+        {
+            showTooltip = false;
+            return;
+        }
+
+        var x = mouseCoords.Value.X;
+        var y = mouseCoords.Value.Y;
+
+        // 查找最近的数据点
+        int closestIndex = FindClosestDataPoint(x, y);
+        if (closestIndex >= 0)
+        {
+            // 显示提示
+            tooltipText = $"X: {actualX[closestIndex]}, Y: {actualY[closestIndex]}";
+            tooltipXpx = e.ClientX + 10;
+            tooltipYpx = e.ClientY + 10;
+            showTooltip = true;
+        }
+        else
+        {
+            showTooltip = false;
+        }
+    }
+
+    private int FindClosestDataPoint(double x, double y)
+    {
+        int closestIndex = -1;
+        double minDistance = double.MaxValue;
+
+        for (int i = 0; i < actualX.Length; i++)
+        {
+            double dx = actualX[i] - x;
+            double dy = actualY[i] - y;
+            double distance = Math.Sqrt(dx * dx + dy * dy);
+
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestIndex = i;
+            }
+        }
+
+        return closestIndex;
+    }
+
+private void OnMouseMove(MouseEventArgs e)
+    {
+        var plt = BlazorPlot.Plot;
+
+        // 获取鼠标相对于图表的坐标
+        var mouseCoords = BlazorPlot.GetMouseCoordinates(e);
+        if (mouseCoords == null)
+        {
+            showTooltip = false;
+            return;
+        }
+
+        var x = mouseCoords.Value.X;
+        var y = mouseCoords.Value.Y;
+
+        // 查找最近的数据点
+        int closestIndex = FindClosestDataPoint(x, y);
+        if (closestIndex >= 0)
+        {
+            // 显示提示
+            tooltipText = $"X: {actualX[closestIndex]}, Y: {actualY[closestIndex]}";
+            tooltipXpx = e.ClientX + 10;
+            tooltipYpx = e.ClientY + 10;
+            showTooltip = true;
+        }
+        else
+        {
+            showTooltip = false;
+        }
+    }
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var plt = BlazorPlot.Plot;
+
+            // 计算线性趋势
+            var trend = CalculateLinearTrend(actualX, actualY);
+
+            // 绘制实际数据
+            var actualPlot = plt.Add.Scatter(actualX, actualY);
+            actualPlot.Color = Colors.Blue;
+            actualPlot.MarkerSize = 5;
+
+            // 生成预测数据
+            double[] forecastX = { 10, 11, 12, 13, 14, 15 };
+            double[] forecastY = forecastX.Select(x => trend.Item1 * x + trend.Item2).ToArray();
+
+            // 生成趋势线
+            double minX = actualX.Min();
+            double maxX = forecastX.Max();
+            double[] trendX = { minX, maxX };
+            double[] trendY = {
+                trend.Item1 * minX + trend.Item2,
+                trend.Item1 * maxX + trend.Item2
+            };
+
+            // 绘制趋势线
+            var trendPlot = plt.Add.Scatter(trendX, trendY);
+            trendPlot.Color = Colors.Red;
+            trendPlot.LineWidth = 2;
+
+            // 绘制预测数据
+            var forecastPlot = plt.Add.Scatter(forecastX, forecastY);
+            forecastPlot.Color = Colors.Green; // 预测数据的颜色
+            forecastPlot.MarkerSize = 5;
+            forecastPlot.LineWidth = 2;
+        }
+    }
+
+    private (double slope, double intercept) CalculateLinearTrend(double[] x, double[] y)
+    {
+        int n = x.Length;
+        double sumX = x.Sum();
+        double sumY = y.Sum();
+        double sumXY = 0;
+        double sumX2 = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            sumXY += x[i] * y[i];
+            sumX2 += x[i] * x[i];
+        }
+
+        double slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+        double intercept = (sumY - slope * sumX) / n;
+
+        return (slope, intercept);
+    }
+} *@
+
+
+<h1>Jean Blazor</h1>
+<BlazorPlot @ref="BlazorPlot" Style="width:100%; height: 400px;" />
+
+@code {
+    private BlazorPlot BlazorPlot { get; set; } = new();
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var plt = BlazorPlot.Plot;
+            double[] actualX = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            double[] actualY = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
+
+            var actualPlot = plt.Add.Scatter(actualX, actualY);// 这里增加lable也报错，不存在
+            actualPlot.Color = Colors.Blue;
+            actualPlot.MarkerSize = 5; 
+            actualPlot.LineWidth = 2;
+            @* Linestyle不可使用，直接用会报错，antChart已存在，加上Scottplot也报错，不存在，改成system也报错 *@
+
+              // 计算线性趋势
+            var trend = CalculateLinearTrend(actualX, actualY);
+
+            // 生成预测数据
+            double[] forecastX = { 10, 11, 12, 13, 14, 15 };
+            double[] forecastY = forecastX.Select(x => trend.Item1 * x + trend.Item2).ToArray();
+
+            // 生成趋势线
+            double minX = actualX.Min();
+            double maxX = forecastX.Max();
+            double[] trendX = { minX, maxX };
+            double[] trendY = {
+                trend.Item1 * minX + trend.Item2,
+                trend.Item1 * maxX + trend.Item2
+            };
+
+            // 绘制趋势线
+            var trendPlot = plt.Add.Scatter(trendX, trendY);
+            trendPlot.Color = Colors.Red;
+            trendPlot.LineWidth = 2;
+
+            // 绘制预测数据
+            var forecastPlot = plt.Add.Scatter(forecastX, forecastY);
+            forecastPlot.Color = Colors.Green;
+            forecastPlot.MarkerSize = 5;
+            forecastPlot.LineWidth = 2;
+        }
+    }
+
+    // 计算简单线性回归趋势
+    private (double, double) CalculateLinearTrend(double[] x, double[] y)
+    {
+        int n = x.Length;
+        double sumX = x.Sum();
+        double sumY = y.Sum();
+        double sumXY = 0;
+        double sumX2 = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            sumXY += x[i] * y[i];
+            sumX2 += x[i] * x[i];
+        }
+
+        double slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+        double intercept = (sumY - slope * sumX) / n;
+
+        return (slope, intercept);
+    }
+}
+
+@* <BlazorPlot @ref="BlazorPlot" Style="width:100%; height: 500px;" />
+
+@code {
+
+    BlazorPlot BlazorPlot { get; set; } = new();
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            double[] customX = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            double[] customY1 = { 0, 1, 4, 9, 16, 25, 36, 49, 64, 81 }; // Example: Y = X^2
+
+            BlazorPlot.Plot.Add.Scatter(customX, customY1);
+        }
+    }
+} *@
+
+@* <BlazorPlot @ref=BlazorPlot Style="width:100%; height: 400px;" />
+
+@code {
+
+    BlazorPlot BlazorPlot { get; set; } = new();
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        BlazorPlot.Plot.Add.Signal(Generate.Sin());
+        BlazorPlot.Plot.Add.Signal(Generate.Cos());
+    }
+} *@

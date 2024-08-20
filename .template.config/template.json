@@ -1,10 +1,10 @@
 {
     "$schema": "http://json.schemastore.org/template",
-    "author": "AntDesign Blazor Team",
+    "author": "Jean",
     "classifications": [
-        "Ant Design Pro"
+        "Jean Demo"
     ],
-    "name": "Ant Design Pro Blazor App",
+    "name": "Jean Chart",
     "identity": "AntDesign.Pro",
     "groupIdentity": "AntDesign.Pro",
     "shortName": "antdesign",

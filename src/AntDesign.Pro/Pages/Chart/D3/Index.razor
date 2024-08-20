@@ -1,0 +1,34 @@
+﻿@page "/chart/d3"
+@inject IJSRuntime JS
+
+<h3>D3.js Line Chart in Blazor</h3>
+<div id="chart"></div>
+<button @onclick="ResetChart">Reset Chart</button>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("drawLineChart");
+        }
+    }
+
+    private async Task ResetChart()
+    {
+        await JS.InvokeVoidAsync("resetChart");
+    }
+}
+
+@* <h3>D3.js Chart in Blazor</h3>
+<div id="chart"></div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("drawChart");
+        }
+    }
+} *@

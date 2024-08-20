@@ -14,9 +14,18 @@
     <PackageReference Include="AntDesign.Charts" Version="0.5.1" />
     <PackageReference Include="AntDesign.Extensions.Localization" Version="0.19.6" />
     <PackageReference Include="AntDesign.ProLayout" Version="0.19.6" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="IgniteUI.Blazor.Trial" Version="23.2.257" />
+    <PackageReference Include="LiveCharts" Version="0.9.7" />
+    <PackageReference Include="LiveCharts.Core" Version="0.9.8" />
+    <PackageReference Include="LiveChartsCore" Version="2.0.0-rc2" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView" Version="2.0.0-rc2" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.Blazor" Version="2.0.0-rc2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+    <PackageReference Include="ScottPlot" Version="5.0.37" />
+    <PackageReference Include="ScottPlot.Blazor" Version="5.0.37" />
     <PackageReference Include="System.Net.Http.Json" Version="8.0.0" />
   </ItemGroup>
 
@@ -46,6 +55,54 @@
   <ItemGroup>
     <Watch Include="**\*.razor" />
     <Watch Include="**\*.less" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\Bar\Bar.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\ChartCard\ChartCard.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\ChartCard\ChartCard.razor.less" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\Field\Field.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\Field\Field.razor.less" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\Gauge\Gauge.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\index.less" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\MiniArea\MiniArea.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\MiniBar\MiniBar.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\MiniProgress\MiniProgress.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\MiniProgress\MiniProgress.razor.less" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\Pie\Pie.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\Pie\Pie.razor.less" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\TagCloud\TagCloud.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\TagCloud\TagCloud.razor.less" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\TimelineChart\TimelineChart.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\TimelineChart\TimelineChart.razor.less" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\WaterWave\WaterWave.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Charts\WaterWave\WaterWave.razor.less" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\NumberInfo\NumberInfo.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\NumberInfo\NumberInfo.razor.less" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\PageLoading\PageLoading.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\SalesCard.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Trend\Trend.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Components\Trend\Trend.razor.less" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Index.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Analysis\Index.razor.less" />
+    <Watch Remove="Pages\Dashboard - Copy\DemoChart\Index.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Monitor\Components\ActiveChart\ActiveChart.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Monitor\Components\ActiveChart\ActiveChart.razor.less" />
+    <Watch Remove="Pages\Dashboard - Copy\Monitor\Components\Charts\Gauge\Gauge.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Monitor\Components\Charts\Map\Map.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Monitor\Components\Charts\Map\MiniArea.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Monitor\Components\Charts\Pie\Pie.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Monitor\Components\Charts\TagCloud\TagCloud.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Monitor\Components\Charts\WaterWave\WaterWave.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Monitor\Index.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Monitor\Index.razor.less" />
+    <Watch Remove="Pages\Dashboard - Copy\Workplace\Components\EditableLinkGroup\EditableLinkGroup.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Workplace\Components\EditableLinkGroup\EditableLinkGroup.razor.less" />
+    <Watch Remove="Pages\Dashboard - Copy\Workplace\Components\Radar\AutoHeight.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Workplace\Components\Radar\Radar.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Workplace\Components\Radar\Radar.razor.less" />
+    <Watch Remove="Pages\Dashboard - Copy\Workplace\Index.razor" />
+    <Watch Remove="Pages\Dashboard - Copy\Workplace\Index.razor.less" />
   </ItemGroup>
 
   <ItemGroup>

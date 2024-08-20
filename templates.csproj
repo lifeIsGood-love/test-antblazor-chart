@@ -31,4 +31,10 @@
     <Compile Remove="**\*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AntDesign.Charts" Version="0.5.5" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.Blazor" Version="2.0.0-rc2" />
+    <PackageReference Include="ScottPlot" Version="5.0.37" />
+  </ItemGroup>
+
 </Project>
