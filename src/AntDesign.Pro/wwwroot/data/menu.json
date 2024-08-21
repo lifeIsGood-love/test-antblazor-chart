@@ -6,6 +6,11 @@
     "icon": "check-circle",
     "children": [
       {
+        "path": "/chart/chartJs",
+        "name": "ChartJs",
+        "key": "chart.chartJs"
+      },
+      {
         "path": "/chart/infragisticsDemo",
         "name": "InfragisticsDemo",
         "key": "chart.infragisticsDemo"
