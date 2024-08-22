@@ -1,0 +1,19 @@
+﻿@page "/chart/echartJs"
+@inject IJSRuntime JS
+@using Microsoft.JSInterop
+
+<h3>echart</h3>
+
+<div id="chart-container" style="width: 600px; height: 400px;"></div>
+
+@code {
+    private string theme = "light";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("initializeChart");
+        }
+    }
+}
