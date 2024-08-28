@@ -44,6 +44,31 @@ function initializeChart() {
             },
             enterable: true
         },
+        dataZoom: [
+            {
+              type: 'slider',
+              show: true,
+              start: 94,
+              end: 100,
+              handleSize: 8
+            },
+            {
+              type: 'inside',
+              start: 0,
+              end: 100
+            },
+            {
+              type: 'slider',
+              show: true,
+              yAxisIndex: 0,
+              filterMode: 'none',
+              width: 12,
+              height: '70%',
+              handleSize: 8,
+              showDataShadow: false,
+              left: '93%'
+            }
+          ],
         series: [
             {
                 data: [150, 230, 224, 218, 135, 147, 260],
@@ -64,56 +89,6 @@ function initializeChart() {
 
     // Save the chart instance for later updates
     window.chartInstance = chart;
-}
-
-function updateChartTheme(theme) {
-    if (window.chartInstance) {
-        window.chartInstance.dispose();
-        var chart = echarts.init(document.getElementById('chart-container'), theme);
-        window.chartInstance = chart;
-
-        var option = {
-            xAxis: {
-                type: 'category',
-                data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-            },
-            yAxis: {
-                type: 'value'
-            },
-            tooltip: {
-                alwaysShowContent: true,
-                position: function (pt) {
-                    return [pt[0], 130]; // Adjust position if necessary
-                },
-                formatter: function (params) {
-                    return `
-                        <div class="tooltip">
-                            <strong>${params.seriesName}</strong><br/>
-                            ${params.name}: ${params.value}<br/>
-                            <button class="tooltip-button" onclick="handleButtonClick()">Click Me</button>
-                        </div>
-                    `;
-                },
-                enterable: true
-            },
-            series: [
-                {
-                    data: [150, 230, 224, 218, 135, 147, 260,null, null,null, null,null],
-                    type: 'line'
-                },
-                {
-                    name: 'Forecast Data',
-                    type: 'line',
-                    data: [null, null, null, null, null, null, null, 260, 270, 280, 290, 300],
-                    lineStyle: {
-                        type: 'dashed' // Dashed line style for forecast
-                    }
-                }
-            ]
-        };
-
-        chart.setOption(option);
-    }
 }
 
 function handleButtonClick() {

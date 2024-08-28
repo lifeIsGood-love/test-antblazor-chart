@@ -26,6 +26,9 @@
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
     <PackageReference Include="ScottPlot" Version="5.0.37" />
     <PackageReference Include="ScottPlot.Blazor" Version="5.0.37" />
+    <PackageReference Include="Syncfusion.Blazor.Calendars" Version="26.2.10" />
+    <PackageReference Include="Syncfusion.Blazor.Core" Version="26.2.10" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="26.2.10" />
     <PackageReference Include="System.Net.Http.Json" Version="8.0.0" />
   </ItemGroup>
 

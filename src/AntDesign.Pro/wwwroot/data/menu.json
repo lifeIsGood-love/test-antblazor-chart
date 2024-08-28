@@ -11,6 +11,11 @@
         "key": "chart.echartJs"
       },
       {
+        "path": "/chart/syncfusion",
+        "name": "Syncfusion",
+        "key": "chart.syncfusion"
+      },
+      {
         "path": "/chart/chartJs",
         "name": "ChartJs",
         "key": "chart.chartJs"
