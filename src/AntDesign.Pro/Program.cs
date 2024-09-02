@@ -8,7 +8,7 @@ using AntDesign.Pro.Template.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using IgniteUI.Blazor.Controls;
-using Syncfusion.Blazor;
+// using Syncfusion.Blazor;
 using ZoomingAndPanning.Data;
 
 namespace AntDesign.Pro.Template
@@ -22,9 +22,9 @@ namespace AntDesign.Pro.Template
             builder.RootComponents.Add<App>("#app");
             //#endif
             builder.Services.AddIgniteUIBlazor();
-            builder.Services.AddSyncfusionBlazor();
-            builder.Services.AddRazorComponents()
-	            .AddInteractiveServerComponents();
+            // builder.Services.AddSyncfusionBlazor();
+            // builder.Services.AddRazorComponents()
+	        //     .AddInteractiveServerComponents();
             builder.Services.AddScoped(
                 sp => new HttpClient {BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)});
 
