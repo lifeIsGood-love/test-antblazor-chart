@@ -1,6 +1,6 @@
 ﻿@page "/chart/echartJs"
 @inject IJSRuntime JS
-@using Microsoft.JSInterop
+@* @using Microsoft.JSInterop
 
 <h3>echart</h3>
 
@@ -16,4 +16,76 @@
             await JS.InvokeVoidAsync("initializeChart");
         }
     }
+} *@
+
+<h3>Graph Example</h3>
+
+<div id="graphContainer" style="width: 800px; height: 600px;"></div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var nodes = new[]
+            {
+                new { id = "node1", icon = "https://example.com/image1.png" },
+                new { id = "node2", icon = "https://example.com/image2.png" },
+                new { id = "node3", icon = "https://example.com/image3.png" }
+            };
+
+            var links = new[]
+            {
+                new { source = "node1", target = "node2" },
+                new { source = "node2", target = "node3" }
+            };
+
+            await JS.InvokeVoidAsync("renderForceGraph", "graphContainer", nodes, links);
+        }
+    }
 }
+
+@* @inject IJSRuntime JS
+
+<h3>Blazor with React Force Graph</h3>
+
+<div id="graphContainer" style="width: 800px; height: 600px;"></div>
+
+@code {
+    @* private static object graphData = new
+    {
+        nodes = new[]
+        {
+            new { id = "node1", icon = "https://example.com/image1.png" },
+            new { id = "node2", icon = "https://example.com/image2.png" },
+            new { id = "node3", icon = "https://example.com/image3.png" }
+        },
+        links = new[]
+        {
+            new { source = "node1", target = "node2" },
+            new { source = "node2", target = "node3" }
+        }
+    };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+             var nodes = new[]
+                {
+                    new { id = "node1", icon = "https://example.com/image1.png" },
+                    new { id = "node2", icon = "https://example.com/image2.png" },
+                    new { id = "node3", icon = "https://example.com/image3.png" }
+                },
+            var links = new[]
+                {
+                    new { source = "node1", target = "node2" },
+                    new { source = "node2", target = "node3" }
+                }
+            // 调用JavaScript函数以渲染React Force Graph
+            await JS.InvokeVoidAsync("renderForceGraph", "graphContainer", nodes, links);
+        }
+    }
+}*@
+
+
